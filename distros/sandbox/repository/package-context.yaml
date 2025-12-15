@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kptfile.kpt.dev
+  annotations:
+    config.kubernetes.io/local-config: "true"
+data:
+  name: example-repo
+  clusterName: example-cluster-name
+  # Git provider configuration (gitea, github, or gitlab)
+  provider: gitea
+  # Base URL for git provider API (required for gitea, optional for github/gitlab)
+  url: "http://172.18.0.200:3000"
+  # Organization/owner for GitHub and GitLab repositories
+  org: nephio
