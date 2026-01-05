@@ -17,22 +17,13 @@ source: |-
     # Read from ConfigMap (package-context.yaml)
     for r in resources:
       if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "kptfile.kpt.dev"):
-        print("DEBUG: Found package-context: {}".format(r.get("data")))
-        clusterName = r["data"]["name"]
-    # 2. READ DIRECTLY FROM PACKAGEVARIANT CONFIGURATION (2026 Best Practice)
-    # The 'configMap' data from PackageVariant is passed here
-    fn_config = ctx.resource_list.get("functionConfig", {})
-    if fn_config and "data" in fn_config:
-      data = fn_config["data"]
-      # Direct overrides from the PackageVariant pipeline definition
-      if "nephio.org/git-provider" in data:
-        provider = data["nephio.org/git-provider"]
-      if "nephio.org/git-org" in data:
-        org = data["nephio.org/git-org"]
-      if "nephio.org/cluster-name" in data:
-        clusterName = data["nephio.org/cluster-name"]
-      if "nephio.org/git-url" in data:
-        url = data["nephio.org/git-url"]
+        data = r.get("data", {})
+        clusterName = data.get("clusterName", clusterName)
+        provider = data.get("provider", provider)
+        org = data.get("org", org)
+        url = data.get("url", url)
+        
+        print("DEBUG: Active Config -> Cluster: {}, Provider: {}".format(clusterName, provider))
     
     # Read from WorkloadCluster for cluster name
     for r in resources:
