@@ -51,6 +51,9 @@ source: |-
       if krmfn.match_gvk(r, "infra.nephio.org/v1alpha1", "Repository"):
         r["metadata"]["name"] = clusterName
         r["spec"]["description"] = clusterName + " repository"
+        r["spec"]["provider"] = provider
+        if provider != "gitea":
+          r["spec"]["org"] = org
         # Set git provider annotation for reference
         if "annotations" not in r["metadata"]:
           r["metadata"]["annotations"] = {}
