@@ -17,6 +17,7 @@ source: |-
     # Read from ConfigMap (package-context.yaml)
     for r in resources:
       if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "kptfile.kpt.dev"):
+        print("DEBUG: Found package-context: {}".format(r.get("data")))
         clusterName = r["data"]["name"]
     # 2. READ DIRECTLY FROM PACKAGEVARIANT CONFIGURATION (2026 Best Practice)
     # The 'configMap' data from PackageVariant is passed here
