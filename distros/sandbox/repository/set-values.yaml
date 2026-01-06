@@ -22,7 +22,7 @@ source: |-
         pv_labels = r["metadata"].get("labels", {})
         pv_annotations = r["metadata"].get("annotations", {})
         print("DEBUG: Active Config -> Cluster: {}, Provider: {}".format(pv_annotations, pv_labels))
-        clusterName = pv_annotations.get(""nephio.org/cluster-name",clusterName)
+        clusterName = pv_annotations.get("nephio.org/cluster-name",clusterName)
         provider = pv_annotations.get("nephio.org/git-provider",provider)
         org = pv_annotations.get("nephio.org/git-org",org)
         
