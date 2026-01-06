@@ -22,6 +22,7 @@ source: |-
         # If your PV controller is configured to copy its own metadata:
         pv_labels = r["metadata"].get("labels", {})
         pv_annotations = r["metadata"].get("annotations", {})
+        clusterName = pv_annotations.get(""nephio.org/cluster-name",clusterName)
         provider = pv_annotations.get("nephio.org/git-provider",provider)
         org = pv_annotations.get("nephio.org/git-org",org)
         
