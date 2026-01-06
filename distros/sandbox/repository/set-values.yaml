@@ -18,15 +18,14 @@ source: |-
     for r in resources:
       if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "kptfile.kpt.dev"):
         data = r.get("data", {})
-        clusterName = data.get("clusterName", clusterName)
         # If your PV controller is configured to copy its own metadata:
         pv_labels = r["metadata"].get("labels", {})
         pv_annotations = r["metadata"].get("annotations", {})
+        print("DEBUG: Active Config -> Cluster: {}, Provider: {}".format(pv_annotations, pv_labels))
         clusterName = pv_annotations.get(""nephio.org/cluster-name",clusterName)
         provider = pv_annotations.get("nephio.org/git-provider",provider)
         org = pv_annotations.get("nephio.org/git-org",org)
         
-        print("DEBUG: Active Config -> Cluster: {}, Provider: {}".format(pv_annotations, pv_labels))
     
     # Read from WorkloadCluster for cluster name
     for r in resources:
