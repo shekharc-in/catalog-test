@@ -28,3 +28,21 @@ replacements:
     fieldPaths:
     - metadata.name
     - spec.clusterName
+- source:
+    kind: ConfigMap
+    name: kptfile.kpt.dev
+    fieldPath: data.provider
+  targets:
+  - select:
+      kind: PackageVariant
+    fieldPaths:
+    - spec.pipeline.mutators.[image=ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4].configMap.[nephio.org/git-provider]
+- source:
+    kind: ConfigMap
+    name: kptfile.kpt.dev
+    fieldPath: data.org
+  targets:
+  - select:
+      kind: PackageVariant
+    fieldPaths:
+    - spec.pipeline.mutators.[image=ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4].configMap.[nephio.org/git-org]

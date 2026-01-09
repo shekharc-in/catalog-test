@@ -20,3 +20,5 @@ spec:
     - image: ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4
       configMap:
         nephio.org/cluster-name: example
+        nephio.org/git-provider: example
+        nephio.org/git-org: example
