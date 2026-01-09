@@ -6,3 +6,5 @@ metadata:
     config.kubernetes.io/local-config: "true"
 data:
   name: example
+  provider: example
+  org: example
