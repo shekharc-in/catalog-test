@@ -17,9 +17,7 @@ spec:
   injectors:
   - kind: WorkloadCluster
     name: example
-  - group: ""
-    version: v1
-    kind: ConfigMap
+  - kind: ConfigMap
     name: git-context
   pipeline:
     mutators:
