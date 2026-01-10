@@ -35,7 +35,6 @@ replacements:
   targets:
   - select:
       kind: PackageVariant
-      name: example-repo
       labels:
         nephio.org/requires-git-provider: "true"
     fieldPaths:
@@ -47,7 +46,6 @@ replacements:
   targets:
   - select:
       kind: PackageVariant
-      name: example-repo
       labels:
         nephio.org/requires-git-provider: "true"
     fieldPaths:
