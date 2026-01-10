@@ -18,7 +18,7 @@ spec:
   - kind: WorkloadCluster
     name: example
   - kind: ConfigMap
-    name: gcp-context
+    name: git-context
   pipeline:
     mutators:
     - image: ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4
