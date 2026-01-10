@@ -30,23 +30,23 @@ replacements:
     - spec.clusterName
 - source:
     kind: ConfigMap
-    name: git-context
+    name: "git-context"
     fieldPath: data.provider
   targets:
   - select:
       kind: PackageVariant
-      labels:
+      annotations:
         nephio.org/requires-git-provider: "true"
     fieldPaths:
-    - spec.pipeline.mutators.[image=ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4].configMap.["nephio.org/git-provider"]
+    - spec.pipeline.mutators.[image=ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4].configMap.[nephio.org/git-provider]
 - source:
     kind: ConfigMap
-    name: git-context
+    name: "git-context"
     fieldPath: data.org
   targets:
   - select:
       kind: PackageVariant
-      labels:
+      annotations:
         nephio.org/requires-git-provider: "true"
     fieldPaths:
-    - spec.pipeline.mutators.[image=ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4].configMap.["nephio.org/git-org"]
+    - spec.pipeline.mutators.[image=ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4].configMap.[nephio.org/git-org]
