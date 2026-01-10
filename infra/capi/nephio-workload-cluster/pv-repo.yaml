@@ -2,6 +2,8 @@ apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata:
   name: example-repo
+  labels:
+    nephio.org/requires-git-provider: "true"
 spec:
   annotations:
     approval.nephio.org/policy: initial
