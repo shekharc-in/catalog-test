@@ -30,7 +30,7 @@ replacements:
     - spec.clusterName
 - source:
     kind: ConfigMap
-    name: kptfile.kpt.dev
+    name: git-context
     fieldPath: data.provider
   targets:
   - select:
@@ -39,7 +39,7 @@ replacements:
     - spec.pipeline.mutators.[image=ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4].configMap.[nephio.org/git-provider]
 - source:
     kind: ConfigMap
-    name: kptfile.kpt.dev
+    name: git-context
     fieldPath: data.org
   targets:
   - select:
