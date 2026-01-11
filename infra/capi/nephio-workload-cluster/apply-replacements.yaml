@@ -36,7 +36,7 @@ replacements:
   - select:
       kind: PackageVariant
       annotations:
-        nephio.org/requires-git-provider: "true"
+        nephio.org/requires-git-provider: Yes
     fieldPaths:
     - spec.pipeline.mutators.[image=ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4].configMap.[nephio.org/git-provider]
 - source:
@@ -47,6 +47,6 @@ replacements:
   - select:
       kind: PackageVariant
       annotations:
-        nephio.org/requires-git-provider: "true"
+        nephio.org/requires-git-provider: Yes
     fieldPaths:
     - spec.pipeline.mutators.[image=ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4].configMap.[nephio.org/git-org]

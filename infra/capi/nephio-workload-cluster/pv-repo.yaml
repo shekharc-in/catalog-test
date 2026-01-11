@@ -3,7 +3,7 @@ kind: PackageVariant
 metadata:
   name: example-repo
   annotations:
-    nephio.org/requires-git-provider: "true"
+    nephio.org/requires-git-provider: Yes
 spec:
   annotations:
     approval.nephio.org/policy: initial
