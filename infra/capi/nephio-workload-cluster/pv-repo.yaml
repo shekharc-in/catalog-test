@@ -2,8 +2,6 @@ apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata:
   name: example-repo
-  annotations:
-    nephio.org/requires-git-provider: Yes
 spec:
   annotations:
     approval.nephio.org/policy: initial
@@ -26,5 +24,3 @@ spec:
     - image: ghcr.io/kptdev/krm-functions-catalog/set-annotations:v0.1.4
       configMap:
         nephio.org/cluster-name: example
-        nephio.org/git-provider: example
-        nephio.org/git-org: example
