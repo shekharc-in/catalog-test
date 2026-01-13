@@ -14,18 +14,11 @@ source: |-
     url = "http://172.18.0.200:3000"
     org = "nephio"
     
-    # Read from ConfigMap (package-context.yaml)
-    #for r in resources:
-    #  if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "kptfile.kpt.dev"):
-    #    data = r.get("data", {})
-    #    # If your PV controller is configured to copy its own metadata:
-    #    pv_labels = r["metadata"].get("labels", {})
-    #    pv_annotations = r["metadata"].get("annotations", {})
-    #    print("DEBUG: Active Config -> Cluster: {}, Provider: {}".format(pv_annotations, pv_labels))
-    #    clusterName = pv_annotations.get("nephio.org/cluster-name",clusterName)
-    #    provider = pv_annotations.get("nephio.org/git-provider",provider)
-    #    org = pv_annotations.get("nephio.org/git-org",org)
-        
+    # this package can be cloned manually and used without injection; in that case base
+    # the repository name on the package name
+    for r in resources:
+      if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "kptfile.kpt.dev"):
+        clusterName = r["data"]["name"]  
     # Read from ConfigMap (git-context.yaml)
     for r in resources:
       if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "git-context"):
